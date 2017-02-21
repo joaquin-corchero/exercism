@@ -4,21 +4,19 @@ defmodule Anagram do
   """
   @spec match(String.t, [String.t]) :: [String.t]
   def match(base, candidates) do
-    split_base = base
-    |> String.downcase
-    |> String.split("", trim: true)
-
     candidates
     |> Enum.filter(fn(possible_anagram) ->
-      is_anagram(split_base, possible_anagram) 
+      is_anagram(split_down(base), split_down(possible_anagram)) 
     end)
   end
 
-  defp is_anagram(split_base, possible_anagram) do
-    split_possible = possible_anagram
+  defp split_down(string) do
+    string
     |> String.downcase
     |> String.split("", trim: true)
-    
+  end
+
+  defp is_anagram(split_base, split_possible) do
     cond do
       split_base == split_possible -> false
       (map(split_base) == map(split_possible)) == true -> true

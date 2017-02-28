@@ -11,7 +11,6 @@ defmodule BracketPush do
 
   @spec check_brackets(String.t) :: boolean
   def check_brackets(str) do
-    IO.puts "========================================="
     arr = String.split(str, "", trim: true)
    
     result = Enum.reduce(arr, [], fn(c, acc) -> add_or_remove(c, acc) end)
@@ -24,14 +23,6 @@ defmodule BracketPush do
   end
 
   defp add_or_remove(item, [head | tail] = acc) do
-    
-    IO.puts "**************************************"
-    IO.puts item
-    IO.puts acc
-    IO.puts head
-    IO.inspect is_opening(item)
-    IO.inspect is_valid_closing(item, acc)
-    IO.puts "---------------------------"
     cond do
       is_opening(item) == true -> [item] ++ acc
       is_valid_closing(item, acc) == true -> tail

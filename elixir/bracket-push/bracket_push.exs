@@ -11,11 +11,9 @@ defmodule BracketPush do
 
   @spec check_brackets(String.t) :: boolean
   def check_brackets(str) do
-    arr = String.split(str, "", trim: true)
-   
-    result = Enum.reduce(arr, [], fn(c, acc) -> add_or_remove(c, acc) end)
-
-    Enum.count(result) == 0
+    String.split(str, "", trim: true)
+    |> Enum.reduce([], fn(c, acc) -> add_or_remove(c, acc) end)
+    |> Enum.count == 0
   end
 
   defp add_or_remove(item, []), do: [item]

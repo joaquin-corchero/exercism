@@ -18,10 +18,7 @@ defmodule BracketPush do
     Enum.count(result) == 0
   end
 
-  defp add_or_remove(item, []) do
-    [item]
-  end
-
+  defp add_or_remove(item, []), do: [item]
   defp add_or_remove(item, [head | tail] = acc) do
     cond do
       is_opening(item) == true -> [item] ++ acc

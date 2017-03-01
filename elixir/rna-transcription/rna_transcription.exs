@@ -16,6 +16,7 @@ defmodule RNATranscription do
 
   @spec to_rna([char]) :: [char]
   def to_rna(dna) do
+    
     result = @map
     |> Map.fetch(dna)
     |> get_match(dna)
